@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de Preferencias de Viaje</title>
+    <link rel="stylesheet" href=" 	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="ofertas" class="container my-5"></div>
+
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) === variable) {
+                    return decodeURIComponent(pair[1].replace(/\+/g, ' '));
+                }
+            }
+            return 'No especificado';
+        }
+
+        function mostrarOfertas() {
+            const destino = getQueryVariable('destino');
+            const transporte = getQueryVariable('transporte');
+            const tipo = getQueryVariable('tipo');
+
+            let contenido = `<h1>Ofertas Personalizadas para Ti</h1>`;
+            contenido += `<p>Basado en tu preferencia de destino: ${destino}</p>`;
+            contenido += `<p>Tu medio de transporte preferido: ${transporte}</p>`;
+            contenido += `<p>Tipo de destino que buscas: ${tipo}</p>`;
+
+            // Aquí podrías añadir lógica para mostrar ofertas específicas basadas en las respuestas
+            if (destino === 'playa' && tipo === 'exotico') {
+                contenido += `<p>¡Descubre nuestras ofertas exclusivas para destinos exóticos en la playa!</p>`;
+            }
+            if (destino === 'ambas' && transporte === 'coche') {
+    contenido += `<p>Explora la diversidad de la Costa Brava, donde puedes disfrutar tanto de hermosas playas como de impresionantes montañas. Todo a poca distancia en coche.</p>`;
+}
+if (destino === 'playa' && transporte === 'coche') {
+    contenido += `<p>Descubre las impresionantes playas de la costa norte de Alemania o las playas de Normandía en Francia, todas accesibles en un cómodo viaje en coche.</p>`;
+}
+if (tipo === 'exotico' && transporte === 'avion') {
+    contenido += `<p>Embárcate en una aventura exótica a Bali o las Maldivas. Nuestros paquetes incluyen vuelos directos desde Ámsterdam y alojamiento de lujo.</p>`;
+}
+if (tipo === 'ciudades' && transporte === 'tren') {
+    contenido += `<p>Descubre la magia de las ciudades europeas con nuestro EuroCity Pass. Visita París, Berlín y más, todo accesible por tren.</p>`;
+}
+
+
+
+            
+
+            document.getElementById('ofertas').innerHTML = contenido;
+        }
+
+        window.onload = mostrarOfertas;
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Interactivo</title>
+    <style>
+        input[type="radio"]{
+            display: none;
+        }
+        .question {
+            margin-bottom: 20px;
+
+        }
+
+        
+        span {
+            display: block;
+            border: solid 1px black;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .checkbutton{
+            display: none;
+        }
+        
+        
+
+        /*show hide questions*/
+        input:checked + div > p + div > label > input + span + label > input + span + label > input + span + label > input + div{
+            display: none;
+        }
+        /*color choose answer*/
+        input:checked+span {
+            background-color: orange;
+        }
+        /*all good*/
+        input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span  + div > span + a {
+            display: none;
+        }
+        /*2 good*/
+        input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span  + div > span + a + a{
+            display: none;
+        }
+        /*1 good*/
+        input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span  + div > span + a + a + a {
+            display: none;
+        }
+        /*0 good*/
+        input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span + label > input + div > p + div.answers > label > input + span + label > input + span + label > input + span  + div > span + a + a + a + a{
+            display: none;
+        }
+        </style>
+</head>
+
+<body>
+    <form action="results.html" method="get">
+        <input type="text" hidden name="id" value="1234">
+        <label>
+            <input type="radio" checked name="destino">
+            <div class="question">
+                 <p>1. ¿Qué destino prefieres?</p>
+                <div class="answers">
+                    <label>
+                        <!--from here selector for buttons-->
+                        <input type="radio" name="destino" value="playa">
+                        <span>Playa</span>
+                        <label>
+                            <input type="radio" name="destino" value="paris">
+                            <span class="good">Montaña</span>
+                            <label>
+                                <input class="bad" type="radio" name="destino" value="berlin">
+                                <span>Ambas</span>
+                                <label for="null">
+                                    <input type="radio" name="transporte" checked>
+                                    <div class="question">
+                                        <p>2. ¿Cómo quieres viajar?</p>
+                                        <div class="answers">
+                                            <label>
+                                                <input class="bad" type="radio" name="transporte" value="avion">
+                                                <span>Avion</span>
+                                                <label>
+                                                    <input class="good" type="radio" name="transporte" value="choche">
+                                                    <span>coche</span>
+                                                    <label>
+                                                        <input class="bad" type="radio" name="transporte" value="tren">
+                                                        <span>Tren</span>
+                                                        <label for="null">
+                                                            <input type="radio" name="tipo" checked>
+                                                            <div class="question">
+                                                                <p>3. ¿Qué tipo de destino estás buscando?</p>
+                                                                <div class="answers">
+                                                                    <label>
+                                                                        <input class="bad" type="radio" name="tipo" value="exotico">
+                                                                        <span>Exótico</span>
+                                                                        <label>
+                                                                            <input class="bad" type="radio" name="tipo" value="naturaleza">
+                                                                            <span>Naturaleza</span >
+                                                                            <label>
+                                                                                <input class="good" type="radio"
+                                                                                    name="tipo" value="ciudades">
+                                                                                <span>Ciudades</span>
+                                                                                <div class="container-buttons">
+                                                                                    <span style="display: none;">&nbsp;</span>
+                                                                                    <a class="checkbutton 3Good" href="">Check</a>
+                                                                                    <a class="checkbutton 2Good" href="">Check</a>
+                                                                                    <a class="checkbutton 1Good" href="">Check</a>
+                                                                                    <a class="checkbutton 0good" href="">Check</a>
+                                                                                    <button type="submit">submit</button>
+                                                                                </div>
+                                                                            </label>
+                                                                        </label>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </label>
+                                                </label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </label>
+                            </label>
+                        </label>
+                    </label>
+                </div>
+            </div>
+        </label>
+    </form>
+</body>
+
+</html>
